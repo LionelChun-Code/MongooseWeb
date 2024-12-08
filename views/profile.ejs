@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="/javascripts/forms/profileFormHandler.js"></script>
+  </head>
+  <body>
+    <h1>Profile</h1>
+    <p>Email: <%= user.email %></p>
+    <p>Username: <%= user.username %></p>
+    <p>My Photo: 
+      <a href="<%= user.avatar ? '/uploads/avatars/originals/' + user.avatar : '/images/default-avatar.png' %>">
+        <img src="<%= user.avatar ? '/uploads/avatars/thumbnails/' + user.avatar : '/images/default-avatar.png' %>" alt="User Thumbnail">
+      </a>
+    </p>
+    <form id="profileForm" enctype="multipart/form-data">
+      <label for="email">Update Email:</label>
+      <input type="email" id="email" name="email" value="<%= user.email %>" required>
+      <br>
+      <label for="username">Update Username:</label>
+      <input type="text" id="username" name="username" value="<%= user.username %>" required>
+      <br>
+      <label for="newAvatar">Upload New Avatar:</label>
+      <input type="file" id="newAvatar" name="newAvatar" accept="image/*">
+      <br>
+      <label for="isDormant">Go Dormant:</label>
+      <input type="checkbox" id="isDormant" name="isDormant" <%= user.isDormant ? 'checked' : '' %>>
+      <br>
+      <button type="submit">Update Profile</button>
+      <p id="message"></p>
+    </form>
+  </body>
+</html>

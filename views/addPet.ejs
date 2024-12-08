@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add a New Pet</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script defer src="/javascripts/forms/addPetFormHandler.js"></script>
+  </head>
+  <body>
+    <h1>Add a New Pet</h1>
+    <form id="petForm" enctype="multipart/form-data">
+      <div>
+        <label for="name">Pet Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="petType">Pet Type:</label>
+        <select id="petType" name="petType" required>
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="rabbit">Rabbit</option>
+          <option value="parrot">Parrot</option>
+        </select>
+      </div>
+      <div>
+        <label for="petAge">Pet Age:</label>
+        <input type="number" id="petAge" name="petAge" required min="0">
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" maxlength="500"></textarea>
+      </div>
+      <div>
+        <label for="petImage">Upload Image:</label>
+        <input type="file" id="petImage" name="petImage" accept="image/*" required>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+      <p id="message"></p> <!-- 消息元素 -->
+    </form>
+  </body>
+</html>

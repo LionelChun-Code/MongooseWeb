@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your Pets</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <h1>Your Pets</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li> 
+        <li><a href="/pets/new">Add a New Pet</a></li> 
+        <li><a href="/pets/my-pets">My Pets</a></li>
+      </ul>
+    </nav>
+    <ul>
+      <% pets.forEach(function(pet) { %>
+        <li>
+          <h2><%= pet.name %> (<%= pet.petType %>)</h2>
+          <p>Age: <%= pet.petAge %> years</p>
+          <p>Description: <%= pet.description %></p>
+          <% if (pet.image) { %>
+            <a href="/uploads/pets/originals/<%= pet.image %>">
+              <img src="/uploads/pets/thumbnails/<%= pet.image %>" alt="<%= pet.name %>">
+            </a>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

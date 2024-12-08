@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script defer src="/javascripts/forms/adminUsersHandler.js"></script> <!-- 引用管理員腳本 -->
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">User Dashboard</a></li>
+        <li><a href="/auth/signout">Sign Out</a></li>
+      </ul>
+    </nav>
+    <h2>Manage Users</h2>
+    <ul id="userList">
+      <% users.forEach(function(user) { %>
+        <li id="user-<%= user._id %>">
+          <h3><%= user.username %></h3>
+          <p>Email: <%= user.email %></p>
+          <p>Status: <%= user.isActivated ? 'Active' : 'Deactivated' %></p>
+          <p>Role: <%= user.role %></p>
+          <button class="deactivate-user" data-id="<%= user._id %>" <%= !user.isActivated ? 'disabled' : '' %>>Deactivate</button>
+          <select class="change-role" data-id="<%= user._id %>">
+            <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+            <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+            <option value="superadmin" <%= user.role === 'superadmin' ? 'selected' : '' %>>Superadmin</option>
+          </select>
+        </li>
+      <% }) %>
+    </ul>
+    <p id="message"></p> <!-- 消息元素 -->
+  </body>
+</html>

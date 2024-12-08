@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Users</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <h1>All Users</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/users/profile">Profile</a></li>
+        <li><a href="/users/settings">Settings</a></li>
+      </ul>
+    </nav>
+    <ul>
+      <% users.forEach(function(user) { %>
+        <li>
+          <h2><%= user.username %></h2>
+          <p>Email: <%= user.email %></p>
+          <!-- 你可以根據需要添加更多用戶信息 -->
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

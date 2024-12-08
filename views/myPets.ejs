@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your Pets</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script defer src="/javascripts/forms/deletePetHandler.js"></script> <!-- 引用刪除腳本 -->
+  </head>
+  <body>
+    <h1>Your Pets</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/pets/addPet">Add a New Pet</a></li>
+        <li><a href="/pets">All Pets</a></li>
+      </ul>
+    </nav>
+    <ul id="petList">
+      <% pets.forEach(function(pet) { %>
+        <li id="pet-<%= pet._id %>">
+          <h2><%= pet.name %> (<%= pet.petType %>)</h2>
+          <p>Age: <%= pet.petAge %> years</p>
+          <p>Description: <%= pet.description %></p>
+          <% if (pet.image) { %>
+            <a href="/uploads/pets/originals/<%= pet.image %>">
+              <img src="/uploads/pets/thumbnails/<%= pet.image %>" alt="<%= pet.name %>">
+            </a>
+          <% } %>
+          <button class="delete-pet" data-id="<%= pet._id %>">Delete</button> <!-- 刪除按鈕 -->
+        </li>
+      <% }) %>
+    </ul>
+    <p id="message"></p> <!-- 消息元素 -->
+  </body>
+</html>

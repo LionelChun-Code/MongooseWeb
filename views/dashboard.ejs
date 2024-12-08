@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <h1>Welcome to your Dashboard, <%= session.user.username %>!</h1>
+    <nav>
+      <ul>
+        <li><a href="/users/profile">Profile</a></li>
+        <li><a href="/users/settings">Settings</a></li>
+        <li><a href="/auth/signout">Sign Out</a></li>
+        <li><a href="/pets/add-pet">Add a New Pet</a></li>
+        <li><a href="/pets">View All Pets</a></li>
+        <li><a href="/pets/my-pets">View Your Pets</a></li>
+        <li><a href="/users/all-users">View All Users</a></li> <!-- 新增連結 -->
+        <% if (session.user.role === 'admin' || session.user.role === 'superadmin') { %>
+          <li><a href="/admin/dashboard">Admin Dashboard</a></li> <!-- 管理員儀表板連結 -->
+        <% } %>
+      </ul>
+    </nav>
+    <p>This is your personal dashboard where you can manage your account, settings, and pets.</p>
+  </body>
+</html>
